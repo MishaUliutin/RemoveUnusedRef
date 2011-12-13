@@ -1,0 +1,38 @@
+﻿<AddIn 
+    name        = "RemoveUnusedRef"
+    author      = "Misha Ulyutin"
+    url         = ""
+    description = "Remove Unused References">
+    
+    <Runtime>
+        <Import assembly = "RemoveUnusedRef.dll"/>
+        <Import assembly = "Mono.Cecil.dll" />
+    </Runtime>
+    
+    <Path path = "/SharpDevelop/Pads/ProjectBrowser/ContextMenu/ProjectNode">
+        <Condition 
+            name   = "WriteableProject" 
+            action = "Disable">
+            <MenuItem 
+                id           = "RemoveUnusedRef"
+                insertafter  = "AddWebReference"
+                insertbefore = "AddSeparator"
+                label        = "Remove Unused References"
+                class        = "RemoveUnusedRef.Commands.RemoveUnusedReferences" />
+        </Condition>
+    </Path>
+    
+    <Path name = "/SharpDevelop/Pads/ProjectBrowser/ContextMenu/ReferenceFolderNode">
+        <Condition 
+            name   = "WriteableProject" 
+            action = "Disable">
+            <MenuItem 
+                id           = "RemoveUnusedRef"
+                insertafter  = "AddWebReference"
+                insertbefore = "AddSeparator"
+                label        = "Remove Unused References"
+                class        = "RemoveUnusedRef.Commands.RemoveUnusedReferences" />
+        </Condition>
+    </Path>
+
+</AddIn>

@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectGuid>{0C235DB5-FA7B-4E33-ABB7-EB2A8FFFC75D}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <OutputType>Library</OutputType>
+    <RootNamespace>RemoveUnusedRef</RootNamespace>
+    <AssemblyName>RemoveUnusedRef</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SignAssembly>False</SignAssembly>
+    <DelaySign>False</DelaySign>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <NoStdLib>False</NoStdLib>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <BaseAddress>4194304</BaseAddress>
+    <FileAlignment>4096</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>..\..\..\..\..\..\SharpDevelop\SharpDevelop_4.1.0.8000_Source\AddIns\RemoveUnusedRef\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <StartAction>Program</StartAction>
+    <StartProgram>..\..\..\..\..\SharpDevelop\SharpDevelop_4.1.0.8000_Source\bin\SharpDevelop.exe</StartProgram>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ICSharpCode.Core">
+      <HintPath>..\..\..\..\..\..\SharpDevelop\SharpDevelop_4.1.0.8000_Source\bin\ICSharpCode.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpDevelop">
+      <HintPath>..\..\..\..\..\..\SharpDevelop\SharpDevelop_4.1.0.8000_Source\bin\ICSharpCode.SharpDevelop.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Mono.Cecil">
+      <HintPath>RequiredLibraries\Mono.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RemoveUnusedRef.addin">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Configuration\AssemblyInfo.cs" />
+    <Compile Include="Src\AddInEngine.cs" />
+    <Compile Include="Src\Commands\RemoveUnusedReferences.cs" />
+    <Compile Include="Src\Extensions\CecilTypesExtension.cs" />
+    <Compile Include="Src\Helper.cs" />
+    <Compile Include="Src\IUsedReferencesAuditEntry.cs" />
+    <Compile Include="Src\IShellProxy.cs" />
+    <Compile Include="Src\ProjectAssemblyResolver.cs" />
+    <Compile Include="Src\ProjectInfo.cs" />
+    <Compile Include="Src\ProjectMetadata.cs" />
+    <Compile Include="Src\ProjectReference.cs" />
+    <Compile Include="Src\ProjectsUnusedReferencesAudit\CSharpProjectAudit.cs" />
+    <Compile Include="Src\ShellProxy.cs" />
+    <Compile Include="Src\UnusedReferencesAudit.cs" />
+    <Compile Include="Src\UnusedReferencesAuditFactory.cs" />
+    <Compile Include="Src\UsedReferencesAuditEntries\AssemblyManifestEntry.cs" />
+    <Compile Include="Src\UsedReferencesAuditEntries\ClassesBaseTypesEntry.cs" />
+    <Compile Include="Src\UsedReferencesAuditEntries\DependentAssembliesEntry.cs" />
+    <Compile Include="Src\UsedReferencesAuditEntries\ImportedTypesEntry.cs" />
+    <Compile Include="Src\UsedReferencesAuditEntries\InterfacesTypesEntry.cs" />
+    <Compile Include="Src\UsedReferencesAuditEntries\TypesAttributesEntry.cs" />
+    <Compile Include="Src\UsedReferencesAuditEntries\Workers\ClassTypeHierarchyWorker.cs" />
+    <Compile Include="Src\UsedReferencesAuditEntries\Workers\ImportedTypeWorker.cs" />
+    <Compile Include="Src\UsedReferencesAuditEntries\Workers\InterfacesTypeWorker.cs" />
+    <Compile Include="Src\UsedReferencesAuditEntries\Workers\MemberReferencesWorker.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Src" />
+    <Folder Include="Src\Commands" />
+    <Folder Include="Src\Extensions" />
+    <Folder Include="Src\UsedReferencesAuditEntries" />
+    <Folder Include="Src\ProjectsUnusedReferencesAudit" />
+    <Folder Include="Src\UsedReferencesAuditEntries\Workers" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
+</Project>
