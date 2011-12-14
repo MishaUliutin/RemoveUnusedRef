@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 using ICSharpCode.SharpDevelop;
 using ICSharpCode.SharpDevelop.Project;
 
@@ -47,6 +48,30 @@ namespace RemoveUnusedRef
                 References = references
             };
             return projectInfo;
+        }
+        
+        public void SaveProject()
+        {
+            m_project.Save();
+        }
+        
+        public void RemoveProjectReference(ProjectReference projectReference)
+        {
+            //TODO: Change where predicate
+            var projectItem = m_project.Items.
+                Select(item => item).
+                Where(item => (item is ReferenceProjectItem) && 
+                      (item.FileName.Equals(projectReference.Location, StringComparison.InvariantCultureIgnoreCase))).
+                Single();
+            ProjectService.RemoveProjectItem(m_project, projectItem);
+        }
+        
+        public IWin32Window MainWin32Window
+        {
+            get
+            {
+                return ICSharpCode.SharpDevelop.Gui.WorkbenchSingleton.MainWin32Window;
+            }
         }
     }
 }

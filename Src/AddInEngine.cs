@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
+using RemoveUnusedRef.Gui;
 
 namespace RemoveUnusedRef
 {
@@ -24,6 +27,24 @@ namespace RemoveUnusedRef
             }
             //TODO: Add log start proccess
             var unusedReferences = GetUnusedReferences(projectInfo);
+            if (unusedReferences.Count() > 0)
+            {
+                using(var dialog = new SelectUnusedrefDialog(unusedReferences))
+                {
+                    if (dialog.ShowDialog(m_shellProxy.MainWin32Window) == DialogResult.OK)
+                    {
+                        foreach(var projectReference in dialog.SelectedProjectReferences)
+                        {
+                            m_shellProxy.RemoveProjectReference(projectReference);
+                        }
+                        m_shellProxy.SaveProject();
+                    }
+                }
+            }
+            else
+            {
+                //TODO: Add log
+            }
         }
         
         private static IEnumerable<ProjectReference> GetUnusedReferences(ProjectInfo projectInfo)

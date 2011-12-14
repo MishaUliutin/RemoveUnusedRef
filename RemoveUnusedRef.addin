@@ -1,6 +1,6 @@
 ﻿<AddIn 
     name        = "RemoveUnusedRef"
-    author      = "Misha Ulyutin"
+    author      = "Misha Uliutin"
     url         = ""
     description = "Remove Unused References">
     

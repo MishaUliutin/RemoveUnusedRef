@@ -82,6 +82,7 @@
     <Compile Include="Src\AddInEngine.cs" />
     <Compile Include="Src\Commands\RemoveUnusedReferences.cs" />
     <Compile Include="Src\Extensions\CecilTypesExtension.cs" />
+    <Compile Include="Src\Gui\SelectUnusedrefDialog.cs" />
     <Compile Include="Src\Helper.cs" />
     <Compile Include="Src\IUsedReferencesAuditEntry.cs" />
     <Compile Include="Src\IShellProxy.cs" />
@@ -108,6 +109,7 @@
     <Folder Include="Src" />
     <Folder Include="Src\Commands" />
     <Folder Include="Src\Extensions" />
+    <Folder Include="Src\Gui" />
     <Folder Include="Src\UsedReferencesAuditEntries" />
     <Folder Include="Src\ProjectsUnusedReferencesAudit" />
     <Folder Include="Src\UsedReferencesAuditEntries\Workers" />
