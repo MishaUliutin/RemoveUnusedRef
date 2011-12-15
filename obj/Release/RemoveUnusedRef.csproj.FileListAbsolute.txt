@@ -1,0 +1,5 @@
+D:\homeprojects\repo\RemoveUnusedRef\bin\Release\RemoveUnusedRef.addin
+D:\homeprojects\repo\RemoveUnusedRef\bin\Release\RemoveUnusedRef.dll
+D:\homeprojects\repo\RemoveUnusedRef\bin\Release\Mono.Cecil.dll
+D:\homeprojects\repo\RemoveUnusedRef\obj\Release\ResolveAssemblyReference.cache
+D:\homeprojects\repo\RemoveUnusedRef\obj\Release\RemoveUnusedRef.dll

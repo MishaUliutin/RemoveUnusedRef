@@ -144,6 +144,8 @@ namespace RemoveUnusedRef.Gui
         
         public SelectUnusedrefDialog(IEnumerable<ProjectReference> projectReferences)
         {
+            if (projectReferences == null)
+                throw new ArgumentNullException("projectReferences");
             InitializeComponent();
             m_selectedProjectReferences = new List<ProjectReference>();
             FillReferencesListView(projectReferences);
@@ -160,7 +162,7 @@ namespace RemoveUnusedRef.Gui
         private void OkButtonClick(object sender, EventArgs e)
         {
             m_selectedProjectReferences.Clear();
-            foreach(var item in referencesListView.Items.OfType<ListViewItem>())
+            foreach(ListViewItem item in referencesListView.Items)
             {
                 if (item.Checked)
                 {

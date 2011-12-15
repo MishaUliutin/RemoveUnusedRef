@@ -1,8 +1,13 @@
 ﻿<AddIn 
     name        = "RemoveUnusedRef"
     author      = "Misha Uliutin"
-    url         = ""
+    url         = "https://github.com/MishaUliutin/RemoveUnusedRef"
     description = "Remove Unused References">
+    
+    <Manifest>
+        <Identity name="RemoveUnusedRef" version="@RemoveUnusedRef.dll" />
+        <Dependency addin="SharpDevelop" version="4.1" />
+    </Manifest>
     
     <Runtime>
         <Import assembly = "RemoveUnusedRef.dll"/>

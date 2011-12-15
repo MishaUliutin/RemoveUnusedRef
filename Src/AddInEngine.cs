@@ -20,12 +20,14 @@ namespace RemoveUnusedRef
         public void Cleanup()
         {
             var projectInfo = m_shellProxy.GetProjectInfo();
+            m_shellProxy.SetStatusBarMessage("Removing unsed references...");
+            m_shellProxy.OutputAppendLine("Removing unsed references started");
             if (projectInfo == null)
-            {
-                //TODO: Add log
+            {            
+                m_shellProxy.SetStatusBarMessage("Can't remove unsed references");
+                m_shellProxy.OutputAppendLine("projectInfo == null, oops...");
                 return;
             }
-            //TODO: Add log start proccess
             var unusedReferences = GetUnusedReferences(projectInfo);
             if (unusedReferences.Count() > 0)
             {
@@ -33,17 +35,21 @@ namespace RemoveUnusedRef
                 {
                     if (dialog.ShowDialog(m_shellProxy.MainWin32Window) == DialogResult.OK)
                     {
-                        foreach(var projectReference in dialog.SelectedProjectReferences)
-                        {
-                            m_shellProxy.RemoveProjectReference(projectReference);
-                        }
-                        m_shellProxy.SaveProject();
+                        m_shellProxy.RemoveProjectReferences(dialog.SelectedProjectReferences);
+                        m_shellProxy.SetStatusBarMessage("Unsed references removed");
+                        m_shellProxy.OutputAppendLine("Unsed references removed");
+                    }
+                    else
+                    {
+                        m_shellProxy.SetStatusBarMessage("Remove unsed references aborted");
+                        m_shellProxy.OutputAppendLine("Remove unsed references aborted");
                     }
                 }
             }
             else
             {
-                //TODO: Add log
+                m_shellProxy.SetStatusBarMessage("Unsed references removed");
+                m_shellProxy.OutputAppendLine("Unsed references removed");
             }
         }
         
