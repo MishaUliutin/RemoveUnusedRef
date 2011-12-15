@@ -1,0 +1,8 @@
+RemoveUnusedRef is SharpDevelop - AddIn for removing unused references from .NET project
+The RemoveUnusedRef uses the Mono.Cecil(http://www.mono-project.com/Cecil) library for reading assembly metadata.
+
+Building
+--------
+Required .NET Framework 4.0
+To build the project execute:
+  releasebuild.bat
