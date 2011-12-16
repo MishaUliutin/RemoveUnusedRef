@@ -5,10 +5,12 @@
     description = "Remove Unused References">
     
     <Manifest>
-        <Identity name="RemoveUnusedRef" version="@RemoveUnusedRef.dll" />
+        <Identity name="RemoveUnusedRef" version="1.0.0" />
         <Dependency addin="SharpDevelop" version="4.1" />
     </Manifest>
-    
+
+    <StringResources file="Resources\StringResources.resources" />
+
     <Runtime>
         <Import assembly = "RemoveUnusedRef.dll"/>
         <Import assembly = "Mono.Cecil.dll" />
@@ -22,7 +24,7 @@
                 id           = "RemoveUnusedRef"
                 insertafter  = "AddWebReference"
                 insertbefore = "AddSeparator"
-                label        = "Remove Unused References"
+                label        = "${res:RemoveUnusedRef.RemoveUnusedRef}"
                 class        = "RemoveUnusedRef.Commands.RemoveUnusedReferences" />
         </Condition>
     </Path>
@@ -35,7 +37,7 @@
                 id           = "RemoveUnusedRef"
                 insertafter  = "AddWebReference"
                 insertbefore = "AddSeparator"
-                label        = "Remove Unused References"
+                label        = "${res:RemoveUnusedRef.RemoveUnusedRef}"
                 class        = "RemoveUnusedRef.Commands.RemoveUnusedReferences" />
         </Condition>
     </Path>

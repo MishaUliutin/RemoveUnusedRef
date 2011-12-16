@@ -82,7 +82,9 @@
     <Compile Include="Src\ProjectInfo.cs" />
     <Compile Include="Src\ProjectMetadata.cs" />
     <Compile Include="Src\ProjectReference.cs" />
+    <Compile Include="Src\ProjectsUnusedReferencesAudit\CppCliProjectAudit.cs" />
     <Compile Include="Src\ProjectsUnusedReferencesAudit\CSharpProjectAudit.cs" />
+    <Compile Include="Src\ProjectsUnusedReferencesAudit\VBasicProjectAudit.cs" />
     <Compile Include="Src\ShellProxy.cs" />
     <Compile Include="Src\UnusedReferencesAudit.cs" />
     <Compile Include="Src\UnusedReferencesAuditFactory.cs" />
@@ -97,14 +99,11 @@
     <Compile Include="Src\UsedReferencesAuditEntries\Workers\InterfacesTypeWorker.cs" />
     <Compile Include="Src\UsedReferencesAuditEntries\Workers\MemberReferencesWorker.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Src" />
-    <Folder Include="Src\Commands" />
-    <Folder Include="Src\Extensions" />
-    <Folder Include="Src\Gui" />
-    <Folder Include="Src\UsedReferencesAuditEntries" />
-    <Folder Include="Src\ProjectsUnusedReferencesAudit" />
-    <Folder Include="Src\UsedReferencesAuditEntries\Workers" />
+    <EmbeddedResource Include="Resources\StringResources.resources">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
 </Project>

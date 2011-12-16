@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using ICSharpCode.Core;
+using ICSharpCode.SharpDevelop.Gui;
 
 namespace RemoveUnusedRef.Gui
 {
@@ -62,7 +64,7 @@ namespace RemoveUnusedRef.Gui
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 6;
-            this.cancelButton.Text = "Cancel";
+            this.cancelButton.Text = ResourceService.GetString("Global.CancelButtonText");
             // 
             // okButton
             // 
@@ -72,7 +74,7 @@ namespace RemoveUnusedRef.Gui
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 23);
             this.okButton.TabIndex = 5;
-            this.okButton.Text = "Ok";
+            this.okButton.Text = ResourceService.GetString("Global.OKButtonText");
             this.okButton.Click += new System.EventHandler(this.OkButtonClick);
             // 
             // buttonsPanel
@@ -113,15 +115,15 @@ namespace RemoveUnusedRef.Gui
             // 
             // referenceNameHeader
             // 
-            this.referenceNameHeader.Text = "Reference Name";
+            this.referenceNameHeader.Text = ResourceService.GetString("RemoveUnusedRef.SelectUnusedRefDialog.HeaderReferenceName");
             this.referenceNameHeader.Width = 150;
             
-            this.referenceLocationHeader.Text = "Location";
+            this.referenceLocationHeader.Text = ResourceService.GetString("RemoveUnusedRef.SelectUnusedRefDialog.HeaderReferenceLocation");
             this.referenceLocationHeader.Width = 200;
             // 
             // referenceVersionHeader
             // 
-            this.referenceVersionHeader.Text = "Version";
+            this.referenceVersionHeader.Text = ResourceService.GetString("RemoveUnusedRef.SelectUnusedRefDialog.HeaderReferenceVersion");
             this.referenceVersionHeader.Width = 80;
             // 
             // SelectUnusedrefDialog
@@ -136,7 +138,7 @@ namespace RemoveUnusedRef.Gui
             this.MinimumSize = new System.Drawing.Size(280, 350);
             this.Name = "SelectUnusedrefDialog";
             this.ShowInTaskbar = false;
-            this.Text = "Remove Unused References";
+            this.Text = ResourceService.GetString("RemoveUnusedRef.SelectUnusedRefDialog.Text");
             this.buttonsPanel.ResumeLayout(false);
             this.listViewPanel.ResumeLayout(false);
             this.ResumeLayout(false);

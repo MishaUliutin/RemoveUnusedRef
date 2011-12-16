@@ -6,3 +6,6 @@ Building
 Required .NET Framework 4.0
 To build the project execute:
   releasebuild.bat
+
+To build *.sdaddin file edit zip.bat and execute
+  sdaddinbuild.bat

@@ -50,15 +50,38 @@ namespace RemoveUnusedRef
             return projectInfo;
         }
         
+        private bool IsEqualReference(
+            ProjectReference projectReference, ReferenceProjectItem referenceProjectItem)
+        {
+            if ((projectReference == null) || (referenceProjectItem == null))
+                return false;
+            string projectReferenceVersion = projectReference.Version == null ? 
+                null 
+                : projectReference.Version.ToString();
+            string referenceProjectItemVersion = referenceProjectItem.Version == null ? 
+                null 
+                : referenceProjectItem.Version.ToString();
+            return 
+                projectReference.Name.Equals(
+                    referenceProjectItem.ShortName, StringComparison.InvariantCultureIgnoreCase) &&
+                string.Equals(
+                    projectReference.Culture, referenceProjectItem.Culture, 
+                    StringComparison.InvariantCultureIgnoreCase) &&
+                string.Equals(
+                    projectReference.PublicKeyToken, referenceProjectItem.PublicKeyToken,
+                    StringComparison.InvariantCultureIgnoreCase) &&
+                string.Equals(
+                    projectReferenceVersion, referenceProjectItemVersion,
+                    StringComparison.InvariantCultureIgnoreCase);
+        }
+        
         public void RemoveProjectReferences(IEnumerable<ProjectReference> projectReferences)
         {
             var projectItems = m_project.Items.
                 Where(item => item is ReferenceProjectItem).
                 Select(item => item as ReferenceProjectItem).
-                Where(item => projectReferences.FirstOrDefault(projectReference =>
-                                                       item.AssemblyName.FullName.Equals(
-                                                           projectReference.FullName,
-                                                           StringComparison.InvariantCultureIgnoreCase)) != null);
+                Where(item => projectReferences.FirstOrDefault(
+                    projectReference => IsEqualReference(projectReference, item)) != null);
             ICSharpCode.SharpDevelop.Gui.WorkbenchSingleton.SafeThreadCall(
                 () =>
                 {
@@ -69,8 +92,7 @@ namespace RemoveUnusedRef
                     if (projectItems.Count() > 0)
                     {
                         m_project.Save();
-                        //Unfortunately references  don't refresh
-                        RerfreshReferences();
+                        ProjectBrowserPad.RefreshViewAsync();
                     }
                 });
         }
@@ -90,16 +112,6 @@ namespace RemoveUnusedRef
             get
             {
                 return ICSharpCode.SharpDevelop.Gui.WorkbenchSingleton.MainWin32Window;
-            }
-        }
-        
-        private void RerfreshReferences()
-        {
-            var visitor = new UpdateReferencesVisitor(new ProjectItemEventArgs(m_project, null));
-            foreach (AbstractProjectBrowserTreeNode treeNode in 
-                     ProjectBrowserPad.Instance.ProjectBrowserControl.TreeView.Nodes)
-            {
-                treeNode.AcceptVisitor(visitor, null);
             }
         }
     }
